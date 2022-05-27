@@ -54,3 +54,4 @@ print(decimal.Decimal(1 / 3))  # гарантированная точность
 
 r = fractions.Fraction(1, 3)  # рациональные числа(дроби вида 1/3)
 print(r, r + r, r * r, r ** r)
+
