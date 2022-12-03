@@ -22,6 +22,7 @@ for filename in sys.argv[1:]:
         # замена пробелами игнорируемых символов с помощью лямбды в генераторе
         # line = ''.join((lambda i: ' ' if i in ignorisym else i) (i) for i in line)
         # но оказалось можно и без лямбды...)
+        # эту конструкцию можно подсунуть везде, где принимается iterable
         line = ''.join(' ' if i in ignorisym else i for i in line)
 
         for word in line.lower().split():

@@ -39,4 +39,5 @@ table_cir_to_dig = "".maketrans(
 
 print("20749".translate(table_dig_to_cir))
 print("②⓪⑦④⑨".translate(table_cir_to_dig))
-print('\u2461\u24ea\u2466\u2463\u2468', '\u2461\u24ea\u2466\u2463\u2468'.translate(table_cir_to_dig))
+print('\u2461\u24ea\u2466\u2463\u2468',
+      '\u2461\u24ea\u2466\u2463\u2468'.translate(table_cir_to_dig))
