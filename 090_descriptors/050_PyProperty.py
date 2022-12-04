@@ -49,7 +49,7 @@ class A:
     def x(self, v):
         self.__x = v
 
-    # x = x.setter <=> @x.setter # т.к. x уже декорирован выше
+    # x = x.setter(x1) <=> @x.setter # т.к. x уже декорирован выше
     # если x не декорирован то x = PyProperty().setter(x)
 
 

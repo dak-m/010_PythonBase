@@ -9,10 +9,18 @@ class MyStaticMethod(object):
     """Emulate PyStaticMethod_Type() in Objects/funcobject.c"""
 
     def __init__(self, f):
+        print(f'__init__: {self}')
         self.f = f
 
     def __get__(self, obj, objtype=None):
+        print(f'__get__: {self}')
         return self.f
+
+    # зачем объект этого класса делать вызываемым??? Оказывается для вызова с
+    # помощью __dict__: Person.__dict__['hellow_2']()
+    def __call__(self, *args, **kwds):
+        print(f'__call__: {self}')
+        return self.f(*args, **kwds)
 
 
 def print_hellow():
@@ -20,6 +28,9 @@ def print_hellow():
 
 
 class Person:
+
+    def hellow_0(self):
+        print('Hellow_0')
 
     # стандартное объявление статичного метода
     @staticmethod
@@ -39,3 +50,11 @@ class Person:
 Person.hellow_1()
 Person.hellow_2()
 Person.hellow_3()
+
+# Удивительно! Но они различаются:
+print(Person.hellow_2)
+print(Person.__dict__['hellow_2'])  # <=> vars(Person)['hellow_2']
+
+print('*'*80)
+Person.hellow_2()  # вызов через __get__
+Person.__dict__['hellow_2']()  # вызов через __call__
