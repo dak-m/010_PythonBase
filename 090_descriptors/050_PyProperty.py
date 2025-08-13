@@ -54,5 +54,7 @@ class A:
 
 
 a = A(5)
+print(a.x)
 c = a.x
 a.x = 7
+print(a.x)

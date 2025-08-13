@@ -9,6 +9,7 @@ class MyDecorator:
         self.funcset = funcset
 
     # спец.методы, отрабатываю при чтении/установке свойства через точку: а.х
+
     def __get__(self, obj, objtype=None):
         value = self.funcget(obj)
         print('__get__:', value)
@@ -47,7 +48,7 @@ class A:
     # передается x()
     @MyDecorator  # создание объекта-декоратора через __init__(funcget = x)
     def x(self):
-        print('')
+        return self.__x
 
     # @x.set_setter <=> x = x.set_setter(x)
     # Эквивалент, тут сложнее т.к. нужно предварительно сохранить геттер,
@@ -64,4 +65,8 @@ class A:
 
 a = A(5)
 
+print(a.x)
+
 a.x = 10
+
+print(a.x)
